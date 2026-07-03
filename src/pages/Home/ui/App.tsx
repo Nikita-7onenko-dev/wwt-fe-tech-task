@@ -1,10 +1,34 @@
+import { useState } from 'react'
+
+import { FilterModalContent } from '@/features/search-filters'
+import { Button } from '@/shared/ui/Button'
+import { Modal } from '@/shared/ui/Modal'
+
 export const App = () => {
+	const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
+
 	return (
-		<section className="w-full h-dvh flex items-center justify-center">
+		<section className="w-full h-dvh flex flex-col items-center justify-center bg-zinc-400">
 			{/* eslint-disable-next-line i18next/no-literal-string */}
 			<h1 className="text-6xl text-gray-600 mb-12">
 				WinWinTravel frontend test task
 			</h1>
+			<Button
+				text="Open Filters Config"
+				onClick={() => setIsOpenModal(true)}
+				variant="apply"
+			/>
+			{isOpenModal && (
+				<Modal
+					onClose={() => setIsOpenModal(false)}
+					title="Filters"
+				>
+					<FilterModalContent
+						onApply={() => {}}
+						onCancel={() => {}}
+					/>
+				</Modal>
+			)}
 		</section>
 	)
 }
