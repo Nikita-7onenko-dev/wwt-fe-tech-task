@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 import { useFilterStore } from '@/entities/filter'
 import { ConfirmDialog, FilterModalContent } from '@/features/search-filters'
+import { FilterType } from '@/shared/api/types/Filter'
+import { SearchRequestFilter } from '@/shared/api/types/SearchRequest/SearchRequestFilter'
 import { Button } from '@/shared/ui/Button'
 import { Modal } from '@/shared/ui/Modal'
 
@@ -12,6 +14,26 @@ export const App = () => {
 	const resetAllFilters = useFilterStore(store => store.resetAllFilters)
 	const commitDraft = useFilterStore(store => store.commitDraft)
 	const rollbackDraft = useFilterStore(store => store.rollbackDraft)
+	const appliedFilters = useFilterStore(store => store.appliedFilters)
+
+	console.log('app render')
+
+	const convertToPayload = (): SearchRequestFilter => {
+		return Object.entries(appliedFilters)
+			.filter(([, val]) => val.length)
+			.reduce<SearchRequestFilter>((acc, item) => {
+				const sectionId = item[0]
+				const optionsIds = item[1]
+				acc.push({
+					id: sectionId,
+					type: FilterType.OPTION,
+					optionsIds
+				})
+				return acc
+			}, [])
+	}
+
+	const payload = convertToPayload()
 
 	const onApply = () => {
 		setIsOpenConfirm(false)
@@ -59,6 +81,7 @@ export const App = () => {
 					/>
 				</Modal>
 			)}
+			<pre>{JSON.stringify(payload, null, 2)}</pre>
 		</section>
 	)
 }
