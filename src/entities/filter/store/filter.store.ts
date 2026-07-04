@@ -6,30 +6,37 @@ interface storeFilters {
 
 interface FilterState {
 	appliedFilters: storeFilters
+	draftFilters: storeFilters
 	addFilter: (sectionId: string, optionId: string) => void
 	deleteFilter: (sectionId: string, optionId: string) => void
 	resetAllFilters: () => void
+	commitDraft: () => void
+	rollbackDraft: () => void
 }
 
 export const useFilterStore = create<FilterState>()(set => ({
 	appliedFilters: {},
+	draftFilters: {},
 	addFilter: (sectionId, optionId) =>
 		set(state => ({
-			appliedFilters: {
-				...state.appliedFilters,
-				[sectionId]: state.appliedFilters[sectionId]
-					? [...state.appliedFilters[sectionId], optionId]
+			draftFilters: {
+				...state.draftFilters,
+				[sectionId]: state.draftFilters[sectionId]
+					? [...state.draftFilters[sectionId], optionId]
 					: [optionId]
 			}
 		})),
 	deleteFilter: (sectionId, optionId) =>
 		set(state => ({
-			appliedFilters: {
-				...state.appliedFilters,
+			draftFilters: {
+				...state.draftFilters,
 				[sectionId]:
-					state.appliedFilters[sectionId]?.filter(item => item !== optionId) ||
-					[]
+					state.draftFilters[sectionId]?.filter(item => item !== optionId) || []
 			}
 		})),
-	resetAllFilters: () => set({ appliedFilters: {} })
+	resetAllFilters: () => set({ draftFilters: {} }),
+	commitDraft: () =>
+		set(state => ({ appliedFilters: { ...state.draftFilters } })),
+	rollbackDraft: () =>
+		set(state => ({ draftFilters: { ...state.appliedFilters } }))
 }))

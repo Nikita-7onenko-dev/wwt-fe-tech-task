@@ -1,4 +1,4 @@
-import { useFilterStore } from '@/entities/filter/store/filter.store'
+import { useFilterStore } from '@/entities/filter'
 import { FilterChooseOption } from '@/shared/api/types/Filter'
 
 type Props = {
@@ -14,7 +14,7 @@ export const FilterCheckbox = ({
 }: Props) => {
 	const isChecked = useFilterStore(
 		store =>
-			store.appliedFilters[sectionId]?.includes(filterChooseOption.id) ?? false
+			store.draftFilters[sectionId]?.includes(filterChooseOption.id) ?? false
 	)
 
 	return (

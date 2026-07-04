@@ -21,7 +21,7 @@ export const Modal = ({ title, children, onClose }: Props) => {
 			onClick={onClose}
 		>
 			<div
-				className="relative bg-white w-[90%] rounded-2xl p-6 z-100 h-fit"
+				className="relative bg-white w-[90%] rounded-2xl p-6 z-100 h-fit flex flex-col min-h-50 justify-between gap-15"
 				onClick={e => e.stopPropagation()}
 			>
 				<div>

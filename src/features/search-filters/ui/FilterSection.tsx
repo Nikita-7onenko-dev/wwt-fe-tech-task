@@ -1,4 +1,4 @@
-import { useFilterStore } from '@/entities/filter/store/filter.store'
+import { useFilterStore } from '@/entities/filter'
 import { FilterChoose } from '@/shared/api/types/Filter'
 
 import { FilterCheckbox } from './FilterCheckbox'
