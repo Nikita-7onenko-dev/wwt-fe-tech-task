@@ -1,3 +1,4 @@
+import { useFilterStore } from '@/entities/filter/store/filter.store'
 import { FilterChoose } from '@/shared/api/types/Filter'
 
 import { FilterCheckbox } from './FilterCheckbox'
@@ -7,13 +8,29 @@ type Props = {
 }
 
 export const FilterSection = ({ section }: Props) => {
-	const checkboxes = section.options.map(option => (
-		<FilterCheckbox
-			key={option.id}
-			filterChooseOption={option}
-			onChange={() => {}}
-		/>
-	))
+	const deleteFilter = useFilterStore(store => store.deleteFilter)
+	const addFilter = useFilterStore(store => store.addFilter)
+
+	const onToggle = (isChecked: boolean, optionId: string) => {
+		if (isChecked) {
+			deleteFilter(section.id, optionId)
+		} else {
+			addFilter(section.id, optionId)
+		}
+	}
+
+	console.log('section render')
+
+	const checkboxes = section.options.map(option => {
+		return (
+			<FilterCheckbox
+				key={option.id}
+				filterChooseOption={option}
+				onToggle={onToggle}
+				sectionId={section.id}
+			/>
+		)
+	})
 
 	return (
 		<section className="border-b-2 border-gray-400 py-5">

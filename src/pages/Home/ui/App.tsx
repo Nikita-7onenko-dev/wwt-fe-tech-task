@@ -1,11 +1,14 @@
 import { useState } from 'react'
 
+import { useFilterStore } from '@/entities/filter/store/filter.store'
 import { FilterModalContent } from '@/features/search-filters'
 import { Button } from '@/shared/ui/Button'
 import { Modal } from '@/shared/ui/Modal'
 
 export const App = () => {
 	const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
+
+	const resetAllFilters = useFilterStore(store => store.resetAllFilters)
 
 	return (
 		<section className="w-full h-dvh flex flex-col items-center justify-center bg-zinc-400">
@@ -25,7 +28,7 @@ export const App = () => {
 				>
 					<FilterModalContent
 						onApply={() => {}}
-						onCancel={() => {}}
+						onReset={resetAllFilters}
 					/>
 				</Modal>
 			)}

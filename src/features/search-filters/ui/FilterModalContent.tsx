@@ -5,11 +5,13 @@ import { FilterSection } from './FilterSection'
 
 type Props = {
 	onApply: () => void
-	onCancel: () => void
+	onReset: () => void
 }
 
-export const FilterModalContent = ({ onApply, onCancel }: Props) => {
+export const FilterModalContent = ({ onApply, onReset }: Props) => {
 	const { data } = useFilters()
+
+	console.log('modal render')
 
 	return (
 		<>
@@ -29,7 +31,7 @@ export const FilterModalContent = ({ onApply, onCancel }: Props) => {
 				<button
 					type="button"
 					className="text-[#078691] underline md:absolute right-0 cursor-pointer"
-					onClick={onCancel}
+					onClick={onReset}
 				>
 					{'Clear all parameters'}
 				</button>
