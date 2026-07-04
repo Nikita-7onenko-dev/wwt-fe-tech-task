@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { useFilterStore } from '@/entities/filter'
 import { FilterChooseOption } from '@/shared/api/types/Filter'
 
@@ -12,6 +14,7 @@ export const FilterCheckbox = ({
 	onToggle,
 	sectionId
 }: Props) => {
+	const { t } = useTranslation('filter')
 	const isChecked = useFilterStore(
 		store =>
 			store.draftFilters[sectionId]?.includes(filterChooseOption.id) ?? false
@@ -28,7 +31,7 @@ export const FilterCheckbox = ({
 				onChange={() => onToggle(isChecked, filterChooseOption.id)}
 				checked={isChecked}
 			/>
-			<span>{filterChooseOption.name}</span>
+			<span>{t(`${sectionId}.options.${filterChooseOption.id}`)}</span>
 		</label>
 	)
 }

@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { useFilters } from '@/entities/filter'
 import { Button } from '@/shared/ui/Button'
 
@@ -10,6 +12,7 @@ type Props = {
 
 export const FilterModalContent = ({ onApply, onReset }: Props) => {
 	const { data } = useFilters()
+	const { t } = useTranslation('common')
 
 	console.log('modal render')
 
@@ -24,7 +27,7 @@ export const FilterModalContent = ({ onApply, onReset }: Props) => {
 
 			<div className="flex justify-center items-center flex-wrap gap-6 relative py-4">
 				<Button
-					text="Apply"
+					text={t('apply')}
 					onClick={onApply}
 					variant="apply"
 				/>
@@ -33,7 +36,7 @@ export const FilterModalContent = ({ onApply, onReset }: Props) => {
 					className="text-[#078691] underline md:absolute right-0 cursor-pointer"
 					onClick={onReset}
 				>
-					{'Clear all parameters'}
+					{t('ClearButton')}
 				</button>
 			</div>
 		</>

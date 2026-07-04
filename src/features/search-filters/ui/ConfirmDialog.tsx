@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { Button } from '@/shared/ui/Button'
 
 type Props = {
@@ -6,15 +8,17 @@ type Props = {
 }
 
 export const ConfirmDialog = ({ onApply, onCancel }: Props) => {
+	const { t } = useTranslation('common')
+
 	return (
 		<div className="flex justify-center gap-5 flex-wrap-reverse">
 			<Button
-				text="Use old filter"
+				text={t('cancelButton')}
 				variant="cancel"
 				onClick={onCancel}
 			/>
 			<Button
-				text="Apply new filter"
+				text={t('confirmButton')}
 				variant="apply"
 				onClick={onApply}
 			/>

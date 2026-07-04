@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { useFilterStore } from '@/entities/filter'
 import { ConfirmDialog, FilterModalContent } from '@/features/search-filters'
@@ -17,6 +18,7 @@ export const App = () => {
 	const appliedFilters = useFilterStore(store => store.appliedFilters)
 
 	console.log('app render')
+	const { t } = useTranslation('common')
 
 	const convertToPayload = (): SearchRequestFilter => {
 		return Object.entries(appliedFilters)
@@ -52,14 +54,14 @@ export const App = () => {
 				WinWinTravel frontend test task
 			</h1>
 			<Button
-				text="Open Filters Config"
+				text={t('openFilters')}
 				onClick={() => setIsOpenModal(true)}
 				variant="apply"
 			/>
 			{isOpenModal && (
 				<Modal
 					onClose={() => setIsOpenModal(false)}
-					title="Filters"
+					title={t('filterModalTitle')}
 				>
 					<FilterModalContent
 						onApply={() => {
@@ -73,7 +75,7 @@ export const App = () => {
 			{isOpenConfirm && (
 				<Modal
 					onClose={() => setIsOpenConfirm(false)}
-					title="Do you want to apply new filter"
+					title={t('confirmModalTitle')}
 				>
 					<ConfirmDialog
 						onApply={onApply}

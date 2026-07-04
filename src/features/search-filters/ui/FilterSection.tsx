@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { useFilterStore } from '@/entities/filter'
 import { FilterChoose } from '@/shared/api/types/Filter'
 
@@ -10,6 +12,7 @@ type Props = {
 export const FilterSection = ({ section }: Props) => {
 	const deleteFilter = useFilterStore(store => store.deleteFilter)
 	const addFilter = useFilterStore(store => store.addFilter)
+	const { t } = useTranslation('filter')
 
 	const onToggle = (isChecked: boolean, optionId: string) => {
 		if (isChecked) {
@@ -34,7 +37,9 @@ export const FilterSection = ({ section }: Props) => {
 
 	return (
 		<section className="border-b-2 border-gray-400 py-5">
-			<h2 className="text-2xl text-gray-800 mb-2">{section.name}</h2>
+			<h2 className="text-2xl text-gray-800 mb-2">
+				{t(`${section.id}.label`)}
+			</h2>
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 my-5">
 				{checkboxes}
 			</div>

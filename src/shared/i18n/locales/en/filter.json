@@ -1,1 +1,47 @@
-{}
+{
+	"MEAL_OPTIONS": {
+		"label": "Meal options",
+		"options": {
+			"breakfast": "Breakfast included",
+			"lunch": "Lunch included",
+			"dinner": "Dinner included",
+			"all-inclusive": "All inclusive"
+		}
+	},
+	"RULES_POLICIES_PAYMENT": {
+		"label": "Rules, Policies, and Payment",
+		"options": {
+			"free-cancellation": "Free cancellation",
+			"pets-allowed": "Pets allowed",
+			"non-smoking-room": "Non-Smoking room"
+		}
+	},
+	"FACILITIES": {
+		"label": "Facilities",
+		"options": {
+			"private-bathroom": "Private bathroom",
+			"air-conditioning": "Air Conditioning",
+			"heating": "Heating",
+			"coffee-tea-maker": "Coffee/Tea maker",
+			"shuttle-service": "Shuttle service",
+			"wi-fi": "Wi-Fi",
+			"parking": "Parking",
+			"pool": "Swimming pool"
+		}
+	},
+	"BED_TYPE": {
+		"label": "Bed type",
+		"options": {
+			"twin-beds": "Twin beds",
+			"double-bed": "Double Bed"
+		}
+	},
+	"HEALTH_ENTERTAINMENT_SPORTS": {
+		"label": "Health, Entertainment, and Sports",
+		"options": {
+			"gym": "Gym Access",
+			"spa": "Spa Access",
+			"sauna": "Sauna"
+		}
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"openFilters": "Open Filters Config",
+	"apply": "Apply",
+	"ClearButton": "Clear all parameters",
+	"confirmButton": "Apply new filter",
+	"cancelButton": "Use old filter",
+	"filterModalTitle": "Filter",
+	"confirmModalTitle": "Do you want to apply new filter",
+	"title": "WinWinTravel frontend test task"
+}
