@@ -33,7 +33,7 @@ export const FilterModalContent = ({ onApply, onReset }: Props) => {
 				/>
 				<button
 					type="button"
-					className="text-[#078691] underline md:absolute right-0 cursor-pointer"
+					className="text-[#078691] underline sm:absolute right-0 cursor-pointer"
 					onClick={onReset}
 				>
 					{t('ClearButton')}

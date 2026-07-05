@@ -1,12 +1,10 @@
 import { create } from 'zustand'
 
-interface storeFilters {
-	[sectionId: string]: string[]
-}
+import { selectedFilters } from './types'
 
 interface FilterState {
-	appliedFilters: storeFilters
-	draftFilters: storeFilters
+	appliedFilters: selectedFilters
+	draftFilters: selectedFilters
 	addFilter: (sectionId: string, optionId: string) => void
 	deleteFilter: (sectionId: string, optionId: string) => void
 	resetAllFilters: () => void

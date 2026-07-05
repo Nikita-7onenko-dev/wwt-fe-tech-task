@@ -6,9 +6,9 @@ type Props = {
 
 const styles = {
 	apply:
-		'text-white bg-[#FF5F00] rounded-2xl py-3 px-10 w-100 md:w-auto cursor-pointer',
+		'text-white bg-[#FF5F00] rounded-2xl py-3 px-10 min-w-[200px] w-full sm:w-auto cursor-pointer',
 	cancel:
-		'text-[#474747] text-l bg-white rounded-2xl py-3 px-10 w-100 md:w-auto cursor-pointer border-[#B4B4B4] border-2'
+		'text-[#474747] text-l bg-white rounded-2xl py-3 px-10 min-w-[200px] w-full sm:w-auto cursor-pointer border-[#B4B4B4] border-2'
 }
 
 export const Button = ({ text, variant, onClick }: Props) => {

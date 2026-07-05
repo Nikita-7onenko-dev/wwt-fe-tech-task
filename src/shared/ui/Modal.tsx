@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 
 import { CloseButton } from './CloseButton'
@@ -10,6 +11,18 @@ type Props = {
 
 export const Modal = ({ title, children, onClose }: Props) => {
 	const modalRoot = document.getElementById('modal-root')
+
+	useEffect(() => {
+		if (!modalRoot) {
+			return
+		}
+
+		document.body.style.overflow = 'hidden'
+
+		return () => {
+			document.body.style.overflow = ''
+		}
+	}, [])
 
 	if (!modalRoot) {
 		return null
@@ -25,7 +38,7 @@ export const Modal = ({ title, children, onClose }: Props) => {
 				onClick={e => e.stopPropagation()}
 			>
 				<div>
-					<h2 className="text-3xl text-center">{title}</h2>
+					<h2 className="text-2xl sm:text-3xl text-center px-8">{title}</h2>
 					<CloseButton onClose={onClose} />
 				</div>
 
