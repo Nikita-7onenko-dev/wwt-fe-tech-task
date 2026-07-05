@@ -66,9 +66,11 @@ export const App = () => {
 					/>
 				</Modal>
 			)}
-			<pre className="text-sm sm:text-base">
-				{JSON.stringify(payload, null, 2)}
-			</pre>
+			{payload.length > 0 && (
+				<pre className="text-sm sm:text-base">
+					{JSON.stringify(payload, null, 2)}
+				</pre>
+			)}
 		</section>
 	)
 }
